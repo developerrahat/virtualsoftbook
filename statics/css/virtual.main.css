@@ -1,0 +1,766 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+:root{
+  --main-color:#0a0908;
+  --hover-color:#0077b6;
+
+  --fw-500:500;
+  --fw-600:600;
+  --fw-700:700;
+}
+body{
+  background: #ededea;
+}
+a{
+    text-decoration: none !important;
+  }
+  ul{
+    list-style: none;
+    padding-left: 0;
+  }
+
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  *{
+    scrollbar-width: thin;
+    scrollbar-color: #080047 #ededed;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 2px;
+    height: 1px;
+  }
+  *::-moz-scrollbar {
+    width: 2px;
+    height: 1px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ededed;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #312783;
+    border-radius:0 0 10px 10px;
+    border: 1px solid #006eff;
+  }
+
+
+  .c-socials {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    padding: 1.2rem 1.2rem 0.5rem 1.2rem;
+    z-index: 2;
+  }
+  
+  .c-socials__list-item {
+    margin-bottom: 1rem;
+  }
+  .c-socials__list-item a{
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    background: #006eff;
+  }
+  .c-slider{
+    overflow: hidden;
+  }
+  .c-slide {
+    display: inline-flex !important;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    will-change: background-size;
+    position: relative;
+    transition: .5s ease;
+    transition-delay: 0.4s;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .c-slide:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 63, 105, 0.8);
+    z-index: -1;
+  }
+  
+  .c-slide-content {
+    padding: 2rem;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 2;
+    max-width: 1200px;
+  }
+  
+  .c-slide__title {
+    font-size:34px;
+    text-transform: uppercase;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 0.8s ease;
+    will-change: opacity, transform;
+    color: #fff;
+    letter-spacing: 5px;
+  }
+  
+  .c-slide__title--large,
+  .c-slide__title--medium {
+    display: block;
+    font-size: 2.8em;
+    line-height: 110px;
+    transform: translateY(150px);
+    will-change: transform;
+    transition-delay: 0.4s;
+    position: relative;
+    transition: 1s ease;
+  }
+  
+  .c-slide__subtitle {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fff;
+  }
+  .c-slide__body {
+    margin-top: 0.7rem;
+    opacity: 0;
+    line-height:34px;
+    color: #fff;
+    font-size: 20px;
+  }
+  
+  .c-slide__info {
+    transform: translateY(-150px);
+    transition: 0.8s ease;
+  }
+  
+  .c-wrap {
+    padding: 2rem 0;
+    overflow: hidden;
+  }
+  .c-wrap--small {
+    max-width: 60%;
+}
+  
+  .c-wrap--line {
+    position: relative;
+  }
+  .c-wrap--line:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background-color: white;
+    bottom: 0;
+    transition: 0.9s ease;
+    transition-delay: 0.4s;
+  }
+  
+  .slick-list {
+    overflow: visible !important;
+  }
+  
+  .animateIn .c-slide__title--large,
+  .animateIn .c-slide__title--medium,
+  .animateIn .c-slide__info,
+  .animateIn .c-slide__title,
+  .animateIn .c-slide__body,
+  .initialAnimation .c-slide__title--large,
+  .initialAnimation .c-slide__title--medium,
+  .initialAnimation .c-slide__info,
+  .initialAnimation .c-slide__title,
+  .initialAnimation .c-slide__body {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .animateIn .c-wrap--line:after,
+  .initialAnimation .c-wrap--line:after {
+    left: 0;
+    transform: translateX(0);
+    width: 100%;
+  }
+  
+  .slick-list {
+    transition: 0.5s ease;
+  }
+  
+  .u-scale-out {
+    transform: scale(0.6) !important;
+    transition: 0.5s ease;
+  }
+  
+  .u-scale-in {
+    transform: scale(1);
+  }
+  
+  @media only screen and (max-width: 1300px) {
+    .c-slide__title {
+      font-size: 3em;
+    }
+  
+    .c-slide__title--large {
+      font-size: 2em;
+    }
+  
+    .c-wrap--small {
+      max-width: 50%;
+    }
+  }
+  @media only screen and (max-width: 1100px) {
+    .c-navigation {
+      display: none;
+    }
+  
+    .c-header {
+      justify-content: space-between;
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    .c-slide__title--medium {
+      font-size: 1.3em;
+    }
+  
+    .c-slide__title {
+      font-size: 2.5em;
+    }
+  
+    .c-slide__title--large {
+      font-size: 1.5em;
+    }
+  
+    .c-wrap--small {
+      max-width: 80%;
+    }
+  }
+
+
+
+
+  /* =========== Our Services Section Css Style Start ============ */
+  .vsb_services_sec{
+    padding-bottom: 60px;
+  }
+  .vsb_services_bg{
+    margin-top: -100px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 111;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16))
+    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.23));
+  }
+  .vsb_left_services_content_wrapper{
+    background: #ededea;
+    padding: 25px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 0px 2px var(--main-color);
+  }
+  .vsb_left_services_content_wrapper h1{
+    font-weight: var(--fw-600);
+    font-size: 34px;
+  }
+  .vsb_left_services_content_wrapper h1 span{
+    color: var(--hover-color);
+    font-weight: var(--fw-700);
+  }
+  .vsb_left_services_content_wrapper h4{
+    font-size: 20px;
+    color: var(--hover-color);
+  }
+  .vsb_left_services_content_wrapper .vsb_btn{
+    font-weight: var(--fw-600);
+    margin-top: 2rem;
+    width: 100%;
+    display: block;
+    padding: 12px;
+    background: #fff;
+    text-align: center;
+    font-size: 20px;
+    color: var(--main-color);
+    transition: .4s ease-in-out;
+    border-radius: 6px;
+    border: 1px dotted var(--hover-color);
+  }
+  .vsb_left_services_content_wrapper .vsb_btn:hover{
+    background: var(--hover-color);
+    color: #fff;
+  }
+  .vsb_s_left_item{
+    text-align: center;
+  }
+  .vsb_s_left_item:hover.vsb_s_left_item h1 {
+    color: var(--hover-color);
+  }
+  .vsb_s_left_item img{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background: transparent;
+  }
+  .vsb_s_left_item h1{
+    font-size: 17px;
+  }
+
+  .vsb_right_service_item{
+    margin:0 .7rem 1.4rem .7rem;
+    padding: 16px 10px;
+    text-align: center;
+    border: 1px dotted var(--hover-color);
+    border-radius: 10px;
+    box-shadow: 1px 2px 6px 1px rgba(0, 0, 0, 0.1);
+    height: 150px;
+  }
+  .vsb_right_service_item img{
+    width: 70px;
+  }
+  .vsb_right_service_item h4{
+    color: var(--main-color);
+    font-size: 15px;
+    font-weight: var(--fw-700);
+    text-transform: uppercase;
+    line-height:22px;
+    letter-spacing:1.5px;
+  }
+  /* =========== Our Services Section Css Style End ============ */
+
+  /* ============ Portfolio Style Css Start =============== */
+  .project_slider{
+      margin-top: 60px;
+  }
+  .project-slide{
+      background: #fff;
+      margin: 20px 15px 20px;
+      border-radius: 15px;
+      padding-top: 1px;
+      box-shadow: 0px 14px 22px -9px #bbcbd8;
+      border-bottom: 2px solid var(--main-color);
+  }
+  .project-slide .project-img{
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      margin: -12px 15px 8px 15px;
+      margin-left: -10px;
+      box-shadow: 2px 2px 0px 1px var(--hover-color);
+      transition: .4s ease-in-out;
+
+  }
+  .project-slide .project-img:hover{
+      box-shadow: 2px 2px 0px 1px var(--main-color);
+
+  }
+  .project-slide .project-img img{
+      width: 100%;
+      height: 250px;
+      transform: scale(1,1);
+      transition:transform 0.2s linear;
+  }
+  .project-slide:hover .project-img img{
+      transform: scale(1.1,1.1);
+  }
+  .project-slide .over-layer{
+      width:100%;
+      height:100%;
+      position: absolute;
+      top:0;
+      left:0;
+      opacity:0;
+      background: linear-gradient(-45deg, rgba(6,190,244,0.75) 0%, rgba(45,112,253,0.6) 100%);
+      transition:all 0.50s linear;
+  }
+  .project-slide:hover .over-layer{
+      opacity:1;
+      text-decoration:none;
+  }
+  .project-slide .over-layer i{
+      position: relative;
+      top:45%;
+      text-align:center;
+      display: block;
+      color:#fff;
+      font-size:25px;
+  }
+  .project-slide .project-content{
+      background:#fff;
+      padding: 2px 20px 40px;
+      border-radius: 15px;
+  }
+  .project-slide .project-content .project_des{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+  .project-slide .project-title a{
+      font-size:15px;
+      font-weight:bold;
+      color:#333;
+      display: inline-block;
+      text-transform:uppercase;
+      transition: all 0.3s ease 0s;
+  }
+  .project-slide .project-title a:hover{
+      text-decoration: none;
+      color:#3498db;
+  }
+  .project-slide .read-more{
+      padding: 7px 20px;
+      float: right;
+      font-size: 12px;
+      background: var(--main-color);
+      color: #ffffff;
+      box-shadow: 0px 10px 25px -10px #1376c5;
+      border-radius: 25px;
+      text-transform: uppercase;
+  }
+  .project-slide .read-more:hover{
+      background: var(--hover-color);
+      text-decoration:none;
+      color:#fff;
+  }
+  .owl-controls .owl-buttons{
+      text-align:center;
+      margin-top:20px;
+  }
+  .owl-controls .owl-buttons .owl-prev{
+      background: #fff;
+      position: absolute;
+      top:-13%;
+      left:0px;
+      padding: 0 15px 0 15px;
+      border-radius: 2px;
+      box-shadow: 2px -4px 6px 1px rgba(0, 0, 0, .1);
+      transition: background 0.5s ease 0s;
+  }
+  .owl-controls .owl-buttons .owl-next{
+      background: #fff;
+      position: absolute;
+      top:-13%;
+      right:0px;
+      padding: 0 15px 0 15px;
+      border-radius: 2px;
+      box-shadow: 2px 4px 6px 1px rgba(0, 0, 0, .1);
+      transition: background 0.5s ease 0s;
+  }
+  .owl-controls .owl-buttons .owl-prev:after,
+  .owl-controls .owl-buttons .owl-next:after{
+      content:"\f104";
+      font-family: FontAwesome;
+      color: var(--hover-color);
+      font-size:15px;
+  }
+  .owl-controls .owl-buttons .owl-next:after{
+      content:"\f105";
+  }
+  @media only screen and (max-width:1280px) {
+      .project-slide .project-content{
+          padding: 0px 15px 25px 15px;
+      }
+  }
+  /* ============ Portfolio Style Css End =============== */
+
+
+
+  /* ============ Features Client Logo Css Style Start ============ */
+  .features-area{
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background: #fff;
+  }
+  .site-heading h2 {
+    display: block;
+    font-weight: var(--fw-700);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  
+  .site-heading h2 span {
+    color: var(--hover-color);
+  }
+  
+  .site-heading h4 {
+    display: inline-block;
+    padding-bottom: 20px;
+    position: relative;
+    text-transform: capitalize;
+    font-size: 20px;
+    z-index: 1;
+  }
+  
+  .site-heading h4::before {
+    background: #ffaf5a none repeat scroll 0 0;
+    bottom: 0;
+    content: "";
+    height: 2px;
+    left: 50%;
+    margin-left: -25px;
+    position: absolute;
+    width: 50px;
+  }
+  
+  .site-heading {
+    margin-bottom: 60px;
+    overflow: hidden;
+    margin-top: -5px;
+  }
+  .features-items,
+  .features-items .items-box {
+    overflow: hidden;
+  }
+  .features-area .equal-height::after {
+    background: var(--main-color) none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    position: absolute;
+    right: -1px;
+    top: 0;
+    width: 1px;
+  }
+  
+  .features-area.item-full .equal-height::before {
+    background: var(--hover-color) none repeat scroll 0 0;
+    content: "";
+    height: 1px;
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+    width: 100%;
+  }
+  .features-area.item-full .features-items .item {
+    padding:15px 0;
+  }
+  .features-area .item .icon img {
+    background: #ffffff none repeat scroll 0 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 2px 1px #cccccc;
+    height: 120px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+    filter: grayscale(100%);
+    transition: .4s ease-in-out;
+  }
+  .features-area .item .icon img:hover{
+    filter: grayscale(0);
+  }
+  /* ============ Features Client Logo Css Style Start =========== */
+
+
+  .latest_projects{
+    padding: 60px 0;
+  }
+
+  /* ============== Our Latest Project Style Css Start ============= */
+  .tab-menu ul {
+    margin: 0;
+    padding: 0;
+  }
+  .tab-menu ul li {
+    list-style-type: none;
+    display: inline-block;
+  }
+  .tab-menu ul li span {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.4);
+    background-color: #fff;
+    padding: 7px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .tab-menu ul li a.active-a {
+    background-color: #588d7d;
+    color: #ffffff;
+  }
+  .tab-active {
+    display: block;
+  }
+
+  .tab-buttons {
+    display: flex;
+    gap: 5px;
+  }
+  .tab-btn {
+    width: 100%;
+    border: none;
+    color: var(--main-color);
+    background-color: #fff;
+    border-radius: 8px 18px 0px 0px;
+    font-weight: var(--fw-500);
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .tab-btn:hover {
+    background-color: var(--hover-color);
+    color: #fff;
+  }
+  .tab-btn.active {
+    background-color: var(--hover-color);
+    color: #fff;
+    position: relative;
+  }
+  .tab-btn.active::after {
+     content: "";
+     position: absolute;
+     bottom: -15px;
+     left: 0;
+     right: 0;
+     margin: auto;
+     width: 0px;
+     height: 0px;
+     border-style: solid;
+     border-width: 22px 9px 0 9px;
+     border-color: var(--hover-color) transparent transparent transparent;
+     transform: rotate(0deg);
+  }
+  
+  .content {
+    display: none;
+    margin-top: 16px;
+  }
+  .content.show {
+    display: flex;
+    gap: 14px;
+    background-color: #fff;
+    border-radius: 0px 0px 8px 8px;
+    padding: 16px;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 5px 1px rgba(104, 104, 104, .2);
+  }
+  
+  .content svg {
+    width: 50%;
+    height: 200px;
+  }
+  
+  /* ============== Our Latest Project Style Css Start ============= */
+
+
+  /* ============= Virtual Softbook Article Style Css Start ================ */
+  
+/* DEFAULT STYLE */
+:root {
+  font-size: 16px;
+  --card-img-height: 250px;
+}
+.card {
+  margin-bottom: 20px;
+  align-self: flex-start;
+  position: relative;
+  background: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px -4px 8px rgba(255, 255, 255, 0.8);
+  transition: all 300ms ease-in-out;
+  border-radius: 10px;
+}
+.card .card-img {
+  visibility: hidden;
+  width: 100%;
+  height: var(--card-img-height);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.card .card-img-hovered {
+  transition: all 350ms ease-in-out;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  position: absolute;
+  height: var(--card-img-height);
+  top: 0;
+}
+.card .card-info {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  transition: all 200ms ease-in-out;
+}
+.card .card-info .card-about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  transition: all 200ms ease-in-out;
+}
+.card .card-info .card-about .card-tag {
+  width: 60px;
+  max-width: 100px;
+  padding: 0.1rem 0.5rem;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: #505f79;
+  color: #fff;
+  border-radius: 30px;
+}
+.card .card-info .card-about .card-tag.tag-news {
+  background: var(--hover-color);
+}
+
+.card .card-info .card-title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  z-index: 10;
+  font-size: 1.2rem;
+
+  transition: all 350ms ease-in-out;
+}
+.card .card-info .card-creator {
+  padding-bottom: 0.75rem;
+  transition: all 250ms ease-in-out;
+}
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0px 15px 35px rgba(227, 252, 239, 0.1), 0px 5px 15px rgba(0, 0, 0, 0.07);
+  transform: scale(1.025);
+}
+.card:hover .card-img-hovered {
+  height: 100%;
+}
+.card:hover .card-about,
+.card:hover .card-creator {
+  opacity: 0;
+  visibility: hidden;
+}
+.card:hover .card-info {
+  background-color: transparent;
+}
+.card:hover .card-title {
+  padding: 10px;
+  color: #fff;
+  transform: translate(0, 40px);
+  background: var(--hover-color);
+  border-radius: 6px;
+
+}
+
+  /* ============= Virtual Softbook Article Style Css Start ================ */
