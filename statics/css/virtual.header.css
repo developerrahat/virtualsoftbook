@@ -47,6 +47,7 @@
 	color: #fff;
 	text-decoration: none;
 	background-color: #1ebdc2 !important;
+	border-radius: 10px;
 }
 .sm-menu {
 	border-radius: 0px;
@@ -55,15 +56,24 @@
 	box-shadow: rgba(173, 173, 173, 0.2) 1px 3px 4px 0px;
 }
 .dropdown-item {
-    margin: 8px 0;
+    margin: 4px 0;
 	color: #3c3c3c;
 	font-size: 15px;
+	transition: .4s ease-in-out;
 }
 .dropdown-item.active,
 .dropdown-item:active {
 	color: #fff;
 	text-decoration: none;
 	background-color: #2196f3;
+}
+.dropdown-menu.megamenu{
+	overflow-x: scroll;
+	height: 100vh;
+}
+.dropdown-menu.megamenu .dropdown-item img{
+	width:40px;
+	border-radius: 50%;
 }
 .navbar-toggler {
 	outline: none !important;
@@ -85,9 +95,7 @@
 .megamenu h6 {
 	margin-left: 21px;
 }
-.megamenu i {
-	width: 20px;
-}
+
 
 
 
